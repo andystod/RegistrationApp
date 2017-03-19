@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RegistrationDatabaseModelStoreContainer" CdmEntityContainer="RegistrationDatabaseEntities">
+    <FunctionImportMapping FunctionImportName="RegistrationDelete" FunctionName="RegistrationDatabaseModel.Store.RegistrationDelete" />
+    <FunctionImportMapping FunctionImportName="RegistrationInsert" FunctionName="RegistrationDatabaseModel.Store.RegistrationInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RegistrationDatabaseModel.RegistrationInsert_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RegistrationSearch" FunctionName="RegistrationDatabaseModel.Store.RegistrationSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RegistrationDatabaseModel.RegistrationSearch_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RegistrationUpdate" FunctionName="RegistrationDatabaseModel.Store.RegistrationUpdate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RegistrationDatabaseModel.RegistrationUpdate_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

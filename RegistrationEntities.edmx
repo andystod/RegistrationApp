@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RegistrationDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="RegistrationDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Original_Username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="RegistrationInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="DateOfBirth" Type="date" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RegistrationSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NameSearchValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="varchar" Mode="In" />
+          <Parameter Name="StartRowIndex" Type="int" Mode="In" />
+          <Parameter Name="TotalRowCount" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RegistrationUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="Original_Username" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="RegistrationDatabaseModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RegistrationDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RegistrationDatabaseEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="RegistrationDelete">
+            <Parameter Name="Original_Username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrationInsert" ReturnType="Collection(RegistrationDatabaseModel.RegistrationInsert_Result)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="DateOfBirth" Mode="In" Type="DateTime" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrationSearch" ReturnType="Collection(RegistrationDatabaseModel.RegistrationSearch_Result)">
+            <Parameter Name="NameSearchValue" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+            <Parameter Name="StartRowIndex" Mode="In" Type="Int32" />
+            <Parameter Name="TotalRowCount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrationUpdate" ReturnType="Collection(RegistrationDatabaseModel.RegistrationUpdate_Result)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Original_Username" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="RegistrationInsert_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="254" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="RegistrationSearch_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="254" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RegistrationUpdate_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="254" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="10" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RegistrationDatabaseModelStoreContainer" CdmEntityContainer="RegistrationDatabaseEntities" >
+          <FunctionImportMapping FunctionImportName="RegistrationDelete" FunctionName="RegistrationDatabaseModel.Store.RegistrationDelete" />
+          <FunctionImportMapping FunctionImportName="RegistrationInsert" FunctionName="RegistrationDatabaseModel.Store.RegistrationInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationDatabaseModel.RegistrationInsert_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RegistrationSearch" FunctionName="RegistrationDatabaseModel.Store.RegistrationSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationDatabaseModel.RegistrationSearch_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RegistrationUpdate" FunctionName="RegistrationDatabaseModel.Store.RegistrationUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationDatabaseModel.RegistrationUpdate_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

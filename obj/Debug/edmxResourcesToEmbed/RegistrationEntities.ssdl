@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RegistrationDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="RegistrationDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Original_Username" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="RegistrationInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateOfBirth" Type="date" Mode="In" />
+    <Parameter Name="Phone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="RegistrationSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NameSearchValue" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="varchar" Mode="In" />
+    <Parameter Name="StartRowIndex" Type="int" Mode="In" />
+    <Parameter Name="TotalRowCount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RegistrationUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="varchar" Mode="In" />
+    <Parameter Name="Original_Username" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="RegistrationDatabaseModelStoreContainer" />
+</Schema>
